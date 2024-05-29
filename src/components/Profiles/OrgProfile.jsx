@@ -101,9 +101,8 @@ const OrgProfile = () => {
         organi=organization;
        
         setOrgData(organization);
+        setLoading(false);
       }
-
-      // setLoading(false); // Set loading to false
     } catch (error) {
       console.error("Error fetching organization data:", error);
       setError(error); // Set the error state
@@ -129,13 +128,13 @@ const OrgProfile = () => {
         organi=organization;// Assuming orgData is not nested in the response
         // Set the organization data state
         setOrgData(organization);
+        setLoading(false);
       }
 
       // setLoading(false); // Set loading to false
     } catch (error) {
       console.error("Error fetching organization data:", error);
-      setError(error); // Set the error state
-      setLoading(false); // Set loading to false
+      setError(error); // Set the error state 
     }
   };
 
@@ -274,9 +273,9 @@ const OrgProfile = () => {
   };
   
   
-  //   if (loading) {
-  //     return <div>Loading...</div>;
-  // }
+    if (loading) {
+      return <div className="mt-[200px] mb-[200px] text-2xl text-center ">Loading...</div>;
+  }
 
   // if (error) {
   //     return <div>Error: {error.message}</div>;
