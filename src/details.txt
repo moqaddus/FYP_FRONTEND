@@ -1,0 +1,10 @@
+to add icons
+npm install --save @fortawesome/fontawesome-svg-core @fortawesome/free-brands-svg-icons @fortawesome/react-fontawesome
+ after i add 
+ npm install --save @fortawesome/fontawesome-svg-core
+npm install --save @fortawesome/free-solid-svg-icons
+npm install --save @fortawesome/react-fontawesome
+
+
+i do routing which include switches 
+npm install react-router-dom@5.2.0
