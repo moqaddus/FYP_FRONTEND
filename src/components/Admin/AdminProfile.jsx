@@ -8,6 +8,7 @@ const AdminProfile = () => {
   const [isAdmin,setIsAdmin]=useState(false);
   const [tokenUsername, setTokenUsername] = useState("");
   const [tokenType,setTokenType]=useState("");
+  const [superAdmin,setSuperAdmin]=useState(false);
 
 useEffect(() => {
   const storedToken = localStorage.getItem("token");
@@ -19,6 +20,10 @@ useEffect(() => {
       {
         setIsAdmin(true);
       }
+      if(decodedToken.username==='moqaddus123')
+        {
+          setSuperAdmin(true);
+        }
   }
 }, []);
 
@@ -35,9 +40,10 @@ if (!isAdmin) {
         </div>
         
         <div className="flex flex-col  space-y-4">
+        {superAdmin && 
         <button className="m-auto w-[60%] bg-orange-400 text-white py-2 px-4 rounded-lg hover:bg-orange-500 transition duration-300">
           <Link to="/signUp"> Add New Admin</Link>
-          </button>
+          </button>}
           <button className=" m-auto w-[60%] bg-orange-400 text-white py-2 px-4 rounded-lg hover:bg-orange-500 transition duration-300">
           <Link to="/addInterest">Add Interest</Link> 
           </button>

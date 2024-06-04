@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import { useParams } from 'react-router-dom'; // Import useParams hook from React Router
+import { ClipLoader } from "react-spinners";
 
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
@@ -32,6 +33,7 @@ const OrgProfile = () => {
   const [token, setToken] = useState("");
   const [tokenId, setTokenId] = useState("");
   const [tokenUsername, setTokenUsername] = useState("");
+  const [tokenType,setTokenType]=useState("");
   
 
   useEffect(() => {
@@ -42,6 +44,10 @@ const OrgProfile = () => {
       setTokenId(decodedToken.id);
       setTokenUsername(decodedToken.username);
       setToken(storedToken);
+      setTokenType(decodedToken.type);
+    }
+    else{
+      setError("Unauthorized Access");
     }
   },[]);
 
@@ -175,7 +181,6 @@ const OrgProfile = () => {
 
   const followOrganization = async () => {
     try {
-      console.log(token);
       const response = await axios.post(
         `${import.meta.env.VITE_API_KEY}/user/followOrg/${orgId}/${tokenId}`,
         {}, // empty data object, as the request doesn't require a request body
@@ -260,12 +265,8 @@ const OrgProfile = () => {
   };
 
   const handleEditProfile = () => {
+    setShowProfileOptions(!showProfileOptions);
     document.getElementById("upload-profile-pic").click(); // Trigger file picker dialog
-  };
-
-  const handleRemoveProfile = () => {
-    // Logic to handle removing profile picture
-    setShowProfileOptions(false);
   };
 
   const handleCloseList = () => {
@@ -273,17 +274,19 @@ const OrgProfile = () => {
   };
   
   
-    if (loading) {
-      return <div className="mt-[200px] mb-[200px] text-2xl text-center ">Loading...</div>;
+
+  if (error) {
+      return <div className="mt-[200px] mb-[200px] text-lg text-center font-bold font-mono">Error: {error.message || error}</div>;
   }
-
-  // if (error) {
-  //     return <div>Error: {error.message}</div>;
-  // }
-
-  // if (!orgData) {
-  //     return <div>No user data available.</div>;
-  // }
+  
+  if (loading) {
+    return <div className="flex items-center justify-center h-full mt-[200px] mb-[200px]">
+        <ClipLoader size={50} color={"#123abc"} loading={true} />
+      </div>
+}
+  if (!orgData) {
+      return <div>No user data available.</div>;
+  }
 
   const { Name, Email, Username, Description, ImagePath } = orgData || {};
 
@@ -369,6 +372,13 @@ const OrgProfile = () => {
               </Link>
             
             </button>}
+
+            {showEdit &&<button
+              onClick={toggleFollowers}
+              className="bg-orange-400 hover:bg-orange-500 text-white px-4 py-2 rounded-lg shadow-md ml-4 mr-2"
+            >
+              Followers
+            </button>}
             
             {isUser && !isFollow && <button onClick={followOrganization} className="bg-orange-400 hover:bg-orange-500 text-white px-4 py-2 rounded-lg shadow-md mr-2">
               {" "}
@@ -421,7 +431,7 @@ const OrgProfile = () => {
             className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50"
             onClick={handleCloseList}
           >
-            <List />
+             <List id={tokenId} type={tokenType}/>
           </div>
         )}
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import "./App.css";
 import NavBar from "./components/SharedComponents/NavBar";
 import Start from "./components/HomeAboutContact/Start";
@@ -28,6 +29,9 @@ import AllOrgs from "./components/PlatformUser/getAllOrganizations";
 import ChatHome from "./components/Chat/ChatHome";
 import EditEvent from "./components/Events/EditEvent";
 import AttendeeList from "./components/Events/AttendeeListEvent";
+import PendingReviewPage from "./components/Events/PendingReviewPage";
+import RatingReviewPage from "./components/Events/RatingReviewPage";
+import ShowRatingAndReview from "./components/Events/ShowRatingAndReview";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
@@ -67,6 +71,12 @@ function App() {
         <Route path="/admin" component={AdminProfile}/>
         <Route path="/suggestions" component={SuggestionsPage}/>
         <Route path="/addInterest" component={AddInterest}/>
+        <Route path="/pendingReview/:attendeeId?" component={PendingReviewPage}/>
+        <Route path="/rating/:attendeeId?" component={RatingReviewPage}/>
+        <Route path="/showRating/:eventId?" component={ShowRatingAndReview}/>
+        {/* <Route path="/averageReview/:eventId?" component={AverageReview}/> */}
+        
+        
       </Switch>
       <Footer />
     </Router>

@@ -59,7 +59,7 @@ const Home = (props) => {
   return (
     <div className="max-w-md mt-48 mx-auto  p-6 bg-gray-100 rounded-lg shadow-lg">
       <h1 className="text-3xl font-semibold text-center mb-4">{itemName}</h1>
-      <p className="text-lg font-semibold mb-4">Price: ${itemPrice}</p>
+      <p className="text-lg font-semibold mb-4">Price: Rs. {itemPrice}</p>
       <div className="flex items-center justify-center mb-4">
         <button
           className="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md mr-4"

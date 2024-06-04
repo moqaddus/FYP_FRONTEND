@@ -90,7 +90,7 @@ function HomeDiv() {
       <div className="h-auto w-full flex flex-wrap justify-evenly p-4 mt-5 mb-8 ">
         <div className="max-w-sm  rounded-lg  overflow-hidden shadow-xl shadow-gray-400 hover:shadow-gray-700 transition duration-1000 mb-8">
           <img
-            className="w-[300px] h-[250px] hover:w-[350px] hover:h-[300px] rounded-md transition duration-2000"
+            className="w-[300px] h-[250px] hover:w-[350px] hover:h-[300px] rounded-md transition duration-[2000ms]"
             src="/images/org.jpg"
             alt=""
           />
@@ -104,7 +104,7 @@ function HomeDiv() {
 
         <div className="max-w-sm  rounded-lg  overflow-hidden shadow-xl shadow-gray-400 hover:shadow-gray-700 transition duration-1000 mb-8">
           <img
-            className="w-[300px] h-[250px] hover:w-[350px] hover:h-[300px] rounded-md transition duration-2000"
+            className="w-[300px] h-[250px] hover:w-[350px] hover:h-[300px] rounded-md transition duration-[2000ms]"
             src="/images/users.png"
             alt=""
           />
@@ -118,7 +118,7 @@ function HomeDiv() {
 
         <div className="max-w-sm rounded-lg  overflow-hidden shadow-xl shadow-gray-400 hover:shadow-gray-700 transition duration-1000 mb-8">
           <img
-            className="w-[300px] h-[250px] hover:w-[350px] hover:h-[300px] rounded-md transition duration-2000"
+            className="w-[300px] h-[250px] hover:w-[350px] hover:h-[300px] rounded-md transition duration-[2000ms]"
             src="/images/events.jpeg"
             alt=""
           />

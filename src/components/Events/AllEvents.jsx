@@ -118,7 +118,17 @@ const AllEvents = () => {
             <div key={index} className="bg-white shadow-md p-4 rounded-lg">
               <h2 className="text-xl font-bold mb-2">{event.Name}</h2>
               <div className="flex items-center mb-2">
-                <img src="https://via.placeholder.com/150" alt="Organization Profile" className="w-8 h-8 rounded-full mr-2" />
+              <img
+                  src={
+                    event.imagePath
+                      ? event.imagePath
+                      : "https://via.placeholder.com/150"
+                  }
+                  alt="Organization Profile"
+                  className="w-8 h-8 rounded-full mr-2"
+                />
+
+                {/* <img src="https://via.placeholder.com/150" alt="Organization Profile" className="w-8 h-8 rounded-full mr-2" /> */}
                 <span className="text-gray-700">{event.organization[0].Username}</span>
               </div>
               <Link to={`/singleEvent/${event._id}`} className="text-blue-500">Details</Link>
